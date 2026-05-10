@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame {
         userField.putClientProperty("JTextField.showClearButton", true);
         passField.putClientProperty("JTextField.placeholderText", "Nhập mật khẩu...");
         passField.putClientProperty("JComponent.roundRect", true);
+        passField.putClientProperty("FlatLaf.style", "showRevealButton: true; roundRect: true");
         logButton.putClientProperty("JButton.buttonType", "roundRect");
         
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/logo-hvktmm.png"));
