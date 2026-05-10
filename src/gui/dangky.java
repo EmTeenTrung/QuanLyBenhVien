@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gui;
+
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
@@ -12,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author chitrung
  */
 public class dangky extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(dangky.class.getName());
 
     /**
@@ -30,7 +31,7 @@ public class dangky extends javax.swing.JFrame {
         cccdField.putClientProperty("JComponent.roundRect", true);
         regButton.putClientProperty("JButton.buttonType", "roundRect");
         logButton.putClientProperty("JButton.buttonType", "roundRect");
-        
+
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon/logo-hvktmm.png"));
         setIconImage(icon.getImage());
         setLocationRelativeTo(this);
@@ -218,21 +219,36 @@ public class dangky extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regButtonActionPerformed
-        // TODO add your handling code here:
+        String user = userField.getText();
+        String pass = new String(passField.getPassword());
+
+        if (user.isEmpty() || pass.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Vui long dien day du thong tin");
+            return;
+        }
+        boolean isSuccess = gui.database.registerAccount(user, pass);
+        if (isSuccess) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Dang ky thanh cong");
+            userField.setText("");
+            passField.setText("");
+            cccdField.setText("");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Dang ky that bai");
+        }
     }//GEN-LAST:event_regButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         try {
-        com.formdev.flatlaf.FlatLightLaf.setup(); 
-    } catch (Exception ex) {
-        System.err.println("Không thể khởi động FlatLaf");
-    }
-    java.awt.EventQueue.invokeLater(() -> {
-        new dangky().setVisible(true);
-    });
+        try {
+            com.formdev.flatlaf.FlatLightLaf.setup();
+        } catch (Exception ex) {
+            System.err.println("Không thể khởi động FlatLaf");
+        }
+        java.awt.EventQueue.invokeLater(() -> {
+            new dangky().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
