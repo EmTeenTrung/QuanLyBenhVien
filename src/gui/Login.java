@@ -108,6 +108,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Mật khẩu:");
 
         logButton.setText("Đăng nhập");
+        logButton.addActionListener(this::logButtonActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,6 +170,21 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
+        String user = userField.getText();
+        String pass = new String(passField.getPassword());
+        
+        boolean checkTaikhoan = gui.database.checkLogin(user, pass);
+        if(checkTaikhoan){
+            javax.swing.JOptionPane.showMessageDialog(this, "Dang nhap thanh cong");
+            return;
+        }
+        else{
+             javax.swing.JOptionPane.showMessageDialog(this, "Tai khoan hoac mat khau sai");
+            return;
+        }
+    }//GEN-LAST:event_logButtonActionPerformed
 
     /**
      * @param args the command line arguments

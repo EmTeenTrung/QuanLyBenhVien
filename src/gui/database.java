@@ -61,13 +61,26 @@ public class database {
     String sql = "INSERT INTO tai_khoan (ten_dang_nhap, mat_khau) VALUES (?, ?)";
     try (Connection conn = getConnection(); 
          java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, username);
+        ps.setString(2, password);
+        return ps.executeUpdate() > 0; 
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+    public static boolean checkLogin(String username, String password) {
+    String sql = "SELECT * FROM tai_khoan WHERE ten_dang_nhap = ? AND mat_khau = ?";
+    
+    try (Connection conn = getConnection(); 
+         java.sql.PreparedStatement ps = conn.prepareStatement(sql)) {
         
-        // Truyền dữ liệu vào các dấu hỏi chấm (?)
         ps.setString(1, username);
         ps.setString(2, password);
         
-        // Chạy lệnh chèn và trả về kết quả (số dòng được thêm)
-        return ps.executeUpdate() > 0; 
+        java.sql.ResultSet rs = ps.executeQuery();
+        return rs.next(); 
+        
     } catch (Exception e) {
         e.printStackTrace();
         return false;

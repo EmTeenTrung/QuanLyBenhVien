@@ -36,6 +36,7 @@ public class dangky extends javax.swing.JFrame {
         setIconImage(icon.getImage());
         setLocationRelativeTo(this);
         setResizable(false);
+        
     }
 
     /**
@@ -133,6 +134,7 @@ public class dangky extends javax.swing.JFrame {
         jLabel3.setText("Bạn đã có tài khoản ?");
 
         logButton.setText("Đăng nhập");
+        logButton.addActionListener(this::logButtonActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -236,6 +238,11 @@ public class dangky extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Dang ky that bai");
         }
     }//GEN-LAST:event_regButtonActionPerformed
+
+    private void logButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logButtonActionPerformed
+        new Login().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_logButtonActionPerformed
 
     /**
      * @param args the command line arguments
