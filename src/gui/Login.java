@@ -90,7 +90,7 @@ public class Login extends javax.swing.JFrame {
         logButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Quản lý bệnh viện");
+        setTitle("Đăng nhập");
         setResizable(false);
 
         jPanel1.setToolTipText("Đăng nhập");
